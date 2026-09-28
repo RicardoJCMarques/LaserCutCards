@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--!
+        @file        index.html
+        @description Laser Cut Cards App Page
+        @author      Eltryus - Ricardo Marques
+        @copyright   2026 Eltryus - Ricardo Marques
+        @see         {@link https://github.com/RicardoJCMarques/LaserCutCards}
+        
+        SPDX-FileCopyrightText: 2026 Eltryus - Ricardo Marques
+        SPDX-License-Identifier: AGPL-3.0-or-later
+    -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Laser Cut Cards - Parametric Playing Cards for Laser Cutters</title>
+    <meta name="description" content="Free browser tool for laser-cut playing cards: divide a sheet into cards, style faces and backs, and export true-millimetre SVG for LightBurn or Trotec.">
+    <meta name="keywords" content="laser cut playing cards, playing card generator, laser cutter SVG, LightBurn, Trotec, card deck design, parametric design">
+    <meta name="author" content="Eltryus">
+    <meta name="theme-color" content="#f1f1ef">
+    <link rel="canonical" href="https://tools.eltryus.design/lasercutcards/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tools.eltryus.design/lasercutcards/">
+    <meta property="og:title" content="Laser Cut Cards - Parametric Playing Cards for Laser Cutters">
+    <meta property="og:description" content="Free browser tool for laser-cut playing cards: divide a sheet into cards, style faces and backs, and export true-millimetre SVG for LightBurn or Trotec.">
+    <meta property="og:image" content="https://www.eltryus.design/images/social-preview-en.png">
+    <meta property="og:site_name" content="Eltryus Tools">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="icon" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/controls.css">
+    <link rel="stylesheet" href="styles/preview.css">
+    <link rel="stylesheet" href="styles/modal.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.eltryus.design/#organization",
+                "name": "Eltryus",
+                "url": "https://www.eltryus.design/"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://tools.eltryus.design/#website",
+                "name": "Eltryus Tools",
+                "url": "https://tools.eltryus.design/",
+                "inLanguage": "en",
+                "publisher": { "@id": "https://www.eltryus.design/#organization" }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://tools.eltryus.design/lasercutcards/#webpage",
+                "url": "https://tools.eltryus.design/lasercutcards/",
+                "name": "Laser Cut Cards - Parametric Playing Cards for Laser Cutters",
+                "inLanguage": "en",
+                "isPartOf": { "@id": "https://tools.eltryus.design/#website" },
+                "mainEntity": { "@id": "https://tools.eltryus.design/lasercutcards/#app" },
+                "breadcrumb": { "@id": "https://tools.eltryus.design/lasercutcards/#breadcrumb" }
+            },
+            {
+                "@type": "WebApplication",
+                "@id": "https://tools.eltryus.design/lasercutcards/#app",
+                "name": "Laser Cut Cards",
+                "url": "https://tools.eltryus.design/lasercutcards/",
+                "mainEntityOfPage": { "@id": "https://tools.eltryus.design/lasercutcards/#webpage" },
+                "applicationCategory": "DesignApplication",
+                "applicationSubCategory": "Laser cutting",
+                "operatingSystem": "Any (Browser-based)",
+                "browserRequirements": "Requires JavaScript",
+                "softwareVersion": "1.0.0",
+                "installUrl": "https://tools.eltryus.design/lasercutcards/",
+                "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+                "isAccessibleForFree": true,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                "description": "Free browser tool for laser-cut playing cards: divide a sheet into cards, style faces and backs, and export true-millimetre SVG for LightBurn or Trotec.",
+                "author": { "@id": "https://www.eltryus.design/#organization" },
+                "publisher": { "@id": "https://www.eltryus.design/#organization" },
+                "sameAs": [ "https://github.com/RicardoJCMarques/LaserCutCards" ],
+                "featureList": [
+                    "Divides a sheet of stock into a grid of cards, sized in real millimetres",
+                    "Separate cut, score and engrave layers, coloured for LightBurn, RDWorks or Trotec",
+                    "Faces with pips, corner indices and faceted court cards",
+                    "Seven procedural back patterns, from guilloché to halftone",
+                    "Exports one card, one suit or the whole 52-card deck",
+                    "The whole design lives in a shareable link"
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://tools.eltryus.design/lasercutcards/#breadcrumb",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Tools", "item": "https://tools.eltryus.design/" },
+                    { "@type": "ListItem", "position": 2, "name": "Laser Cut Cards", "item": "https://tools.eltryus.design/lasercutcards/" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+  <aside id="controls">
+    <h1>Laser Cut Cards</h1>
+    <nav id="stages" aria-label="Workflow stage"></nav>
+    <div id="panels"></div>
+    <p id="notes" role="status" aria-live="polite"></p>
+    <a id="source" href="https://github.com/RicardoJCMarques/LaserCutCards">Source · AGPL-3.0</a>
+  </aside>
+  <main id="workspace">
+    <header id="toolbar">
+      <div class="group">
+        <button type="button" data-action="fit">Fit</button>
+        <button type="button" data-action="zoom-out" aria-label="Zoom out">&minus;</button>
+        <button type="button" data-action="zoom-in" aria-label="Zoom in">+</button>
+      </div>
+      <div class="group push">
+        <button type="button" data-action="help" aria-label="How this works" title="How this works (F1)">?</button>
+        <button type="button" data-action="copy-link">Copy link</button>
+        <button type="button" data-action="reset">Reset</button>
+      </div>
+    </header>
+    <div id="preview" tabindex="0" role="region" aria-label="Preview" aria-describedby="preview-keys"></div>
+    <p id="preview-keys" class="visually-hidden">Arrow keys pan, plus and minus zoom, 0 or F fits the view, F1 opens help.</p>
+    <footer id="hud">
+      <span data-hud="scope"></span>
+      <span data-hud="sheets"></span>
+      <span data-hud="card"></span>
+      <span data-hud="doc"></span>
+      <span data-hud="fit"></span>
+      <span data-hud="cut"></span>
+      <span data-hud="score"></span>
+      <span data-hud="points"></span>
+      <span data-hud="size"></span>
+    </footer>
+  </main>
+  <dialog id="welcome" aria-labelledby="welcome-title">
+    <h2 id="welcome-title">Laser Cut Cards</h2>
+    <p>Describe the sheet you have and how to divide it. You get SVG files sized in real millimetres, so nothing needs re-scaling after import.</p>
+    <ol>
+      <li><b>Stock.</b> Enter the sheet size and pick columns and rows. The card <i>is</i> the cell, so the division is also the shape: 2 x 3 gives portrait cards, 3 x 2 landscape ones.</li>
+      <li><b>Design.</b> Choose faces or the back, and how many cards. What you see here is exactly what Export writes.</li>
+      <li><b>Output.</b> Each side has its own operations. For two-sided cards, use <b>Stock squaring file</b> to trim your stock, engrave faces, flip the sheet left to right against the same origin, run backs, and cut.</li>
+    </ol>
+    <p>The whole design lives in the address bar - copy it to share or reproduce it exactly.</p>
+    <footer>
+        <a href="https://tools.eltryus.design/">More tools by Eltryus</a>
+        <a href="https://github.com/RicardoJCMarques/LaserCutCards">Source · AGPL-3.0</a>
+        <form method="dialog"><button type="submit" autofocus>Start</button></form>
+    </footer>
+  </dialog>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

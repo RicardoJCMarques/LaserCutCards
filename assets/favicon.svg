@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--!
+  Oversized Card Generator - application icon
+  Copyright (C) 2026 Eltryus - Ricardo Marques
+  SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xmlns:c2pa="http://c2pa.org/manifest">
+  <rect x="11" y="5" width="42" height="54" rx="6" fill="#ffffff" stroke="#1b1b1b" stroke-width="4"/>
+  <path d="M32 18 L44 32 L32 46 L20 32 Z" fill="#e00000"/>
+</svg>

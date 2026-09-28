@@ -1,0 +1,27 @@
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+/dist
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Extras
+file-bundle.js
+context-gen.js
+project.config.js
+FILE_BUNDLE_laser-cut-cards.txt
+PROJECT_CONTEXT_laser-cut-cards.txt

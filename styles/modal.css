@@ -1,0 +1,48 @@
+/*!
+ * @file        styles/modal.css
+ * @description Welcome dialog. Native <dialog>, so focus trap, Esc and the
+ *              backdrop are the platform's rather than the app's.
+ * @author      Eltryus - Ricardo Marques
+ * @copyright   2026 Eltryus - Ricardo Marques
+ * @see         {@link https://github.com/RicardoJCMarques/LaserCutCards}
+ *
+ * SPDX-FileCopyrightText: 2026 Eltryus - Ricardo Marques
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+/* The scrim is the one colour outside tokens.css: it is an opacity over whatever
+is behind the dialog, not a surface with a value of its own. */
+#welcome {
+  max-width: 46rem;
+  /* Leaves the dialog scrollable on a phone in landscape rather than clipped. */
+  max-height: 80dvh;
+  overflow-y: auto;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+}
+
+#welcome::backdrop { background: rgb(0 0 0 / 0.45); }
+
+#welcome h2 { margin: 0 0 var(--space-3); font-size: 1.15rem; }
+#welcome p { margin: 0 0 var(--space-3); max-width: 62ch; }
+#welcome ol { margin: 0 0 var(--space-3); padding-left: 1.3em; }
+#welcome li { margin-bottom: var(--space-2); max-width: 62ch; }
+#welcome b { font-weight: 600; }
+
+#welcome footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+#welcome footer a { color: var(--muted); font-size: var(--font-small); }
+#welcome form { margin: 0; }

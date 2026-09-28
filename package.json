@@ -1,0 +1,26 @@
+{
+  "name": "laser-cut-cards",
+  "version": "1.0.0",
+  "description": "Parametric SVG playing card generator for laser cutting workshops.",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "author": "Eltryus - Ricardo Marques",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoJCMarques/LaserCutCards"
+  },
+  "scripts": {
+       "dev": "npx --yes five-server --port=5500 .",
+       "build": "node .github/scripts/build.js",
+       "build:min": "node .github/scripts/build.js --minify",
+       "context": "node context-gen.js",
+       "bundle": "node file-bundle.js --comments=compact --minify=names"
+     },
+  "devDependencies": {
+    "@babel/parser": "^7.29.8",
+    "@babel/traverse": "^7.29.8",
+    "esbuild": "^0.25.0",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.51.2"
+  }
+}

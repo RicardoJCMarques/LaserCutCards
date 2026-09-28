@@ -1,0 +1,90 @@
+/*!
+ * @file        styles/tokens.css
+ * @description Design tokens, reset and shared utilities.
+ *              Colour and typography variables every other stylesheet reads,
+ *              the box-sizing reset, and the visibility utilities the rail and
+ *              canvas share. No other stylesheet defines a literal colour.
+ * @author      Eltryus - Ricardo Marques
+ * @copyright   2026 Eltryus - Ricardo Marques
+ * @see         {@link https://github.com/RicardoJCMarques/LaserCutCards}
+ *
+ * SPDX-FileCopyrightText: 2026 Eltryus - Ricardo Marques
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+/* Greyscale throughout. The preview shows the engrave greys the file carries,
+so colour anywhere else would compete with the only information on the canvas.
+Surfaces are off-white rather than white to keep glare down. */
+:root {
+  color-scheme: light;
+  --bed: #6b6c6e; /* backdrop behind the stock */
+  --panel: #f1f1ef; /* rail, toolbar, status bar */
+  --field: #fafaf9; /* input, select, button */
+  --pressed: #dcdcd9; /* pressed toggle, current stage */
+  --line: #cfcfcc;
+  --line-strong: #8f8f8c; /* hovered or pressed control */
+  --ink: #1d1d1c;
+  --muted: #5b5b59;
+  --stock: #d9d9d6; /* sheet around the cards */
+  --card: #f6f6f3; /* card substrate */
+  --cut-line: #3a3a39; /* cut and score as drawn on the canvas */
+  --on-bed: #efefed; /* captions drawn straight on the bed */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --control-h: 32px;
+  --sidebar-width: 360px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size: 14px;
+  --font-small: 13px;
+  --input-font-size: 14px;
+  --radius: 3px;
+}
+
+/* iOS Safari zooms the page into any focused input set below 16px.
+On touch screens: iOS Safari zooms the page into any focused input set below
+16px, targets need to meet a fingertip (WCAG 2.5.5 asks 44px), and text is
+read from further away. */
+@media (pointer: coarse) {
+  :root {
+    --control-h: 44px;
+    --font-size: 16px;
+    --font-small: 14px;
+    --input-font-size: 16px;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font: var(--font-size)/1.45 var(--font);
+  color: var(--ink);
+  background: var(--panel);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.hidden { display: none !important; }
+
+/* Read by assistive technology, never drawn. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

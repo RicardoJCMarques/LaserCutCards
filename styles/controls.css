@@ -1,0 +1,183 @@
+/*!
+ * @file        styles/controls.css
+ * @description Parameter controls.
+ *              Flat stage sections rather than accordions, typed values on a
+ *              single row, segmented toggle groups, the paired fields that carry
+ *              stock size and the division, the card picker, and the warning
+ *              and information notes.
+ * @author      Eltryus - Ricardo Marques
+ * @copyright   2026 Eltryus - Ricardo Marques
+ * @see         {@link https://github.com/RicardoJCMarques/LaserCutCards}
+ *
+ * SPDX-FileCopyrightText: 2026 Eltryus - Ricardo Marques
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+/* Flat sections separated by a rule; nothing in the rail is boxed. */
+section.panel {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+section.panel:first-child { padding-top: 0; }
+
+section.panel > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size);
+  font-weight: 600;
+}
+
+/* Derived values only. Anything a control already shows is not repeated here. */
+section.panel > h2 .digest {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+section.panel > h2 + .field { margin-top: 0; }
+
+.field > .field-label { color: var(--muted); }
+
+/* A typed value needs no second row, so its label sits beside it. */
+.field.inline {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.field input[type="number"],
+.field select {
+  width: 100%;
+  min-width: 0;
+  height: var(--control-h);
+  padding: 0 var(--space-2);
+  font: inherit;
+  font-size: var(--input-font-size);
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--field);
+}
+
+.field.inline input[type="number"] {
+  width: 6em;
+  text-align: right;
+}
+
+/* Kept as typed, but another parameter limits what the drawing uses; the note
+under the rail names the value in effect. Dashed, so it reads without colour. */
+.field input.limited {
+  border-style: dashed;
+  border-color: var(--ink);
+}
+
+.field > button { justify-self: start; }
+
+/* Toggle groups: every option visible at once, current state always readable. */
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+button.toggle {
+  flex: 1 1 auto;
+  min-width: 2.5em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+button.toggle[aria-pressed="true"],
+button.toggle[aria-pressed="true"]:hover {
+  border-color: var(--line-strong);
+  background: var(--pressed);
+}
+
+/* Two values that read as one measurement: stock width by height, columns by rows. */
+.pair-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pair-row > input {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.pair-row .times {
+  flex: 0 0 auto;
+  color: var(--muted);
+}
+
+button {
+  height: var(--control-h);
+  padding: 0 var(--space-3);
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--field);
+  cursor: pointer;
+}
+
+button:hover { border-color: var(--line-strong); }
+
+button:disabled {
+  opacity: .45;
+  cursor: default;
+  border-color: var(--line);
+}
+
+button.disclose {
+  justify-self: start;
+  height: auto;
+  margin-top: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-weight: 600;
+}
+
+button.disclose:hover { text-decoration: underline; }
+button.disclose::before { content: "\25b8\00a0"; }
+button.disclose[aria-expanded="true"]::before { content: "\25be\00a0"; }
+
+/* Standing explanation rather than a correction, so it reads as body text. */
+p.hint {
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
+  font-size: var(--font-small);
+}
+
+#notes {
+  margin: var(--space-3) 0 0;
+  font-size: var(--font-small);
+}
+
+#notes:empty { display: none; }
+
+/* Corrections and limits are warnings; confirmations are not. */
+#notes .note-warn,
+#notes .note-info { display: block; }
+
+#notes .note-warn {
+  padding-left: var(--space-2);
+  border-left: 3px solid var(--ink);
+}
+
+#notes .note-info { color: var(--muted); }
+#notes .note-warn + .note-info { margin-top: var(--space-1); }
